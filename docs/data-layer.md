@@ -314,7 +314,8 @@ out of shared logs. This is a synchronous database example, not a FastAPI endpoi
 | `explain` | NOT IMPLEMENTED YET |
 
 These names describe planned integration points, not callable functions or agreed
-signatures. `docs/api-contract.md` does not exist in this repository. Use the README
+signatures. A proposed contract is now in [api-contract.md](api-contract.md) and
+requires team review before agreement. Use the README
 SQL query as a starting point for reading events; use parameterized queries when
 adding user-supplied filters. The normalization functions above are available now.
 
