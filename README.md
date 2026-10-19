@@ -173,7 +173,7 @@ schema + Docker PostgreSQL + a small fictional dataset for browsing and integrat
 
 `data/demo_events.json` contains 25 hand-written fictional records with 15 categories,
 six fictional venues, and free, paid, and unknown prices. All titles begin `[DEMO]`;
-descriptions also identify the fiction. URLs are placeholders on `example.com`.
+descriptions also identify the fiction and contain 80-130 words each. URLs are placeholders on `example.com`.
 No real events, real venue claims, source fetching, or embeddings are included.
 Each demo venue has a fictional address and illustrative map coordinates. These
 coordinates are test points, not verified locations of the invented venues.
@@ -192,9 +192,11 @@ identifies these owner-authorized fixtures; no external source is approved.
 Dates are anchored to 2026-10-19, with events 1-25 days later in the seeded city's
 timezone. For a fresh dataset later, supply `--base-date YYYY-MM-DD`. This affects
 only missing fixtures; existing event dates are deliberately left unchanged.
-Reruns refresh the demo venues' addresses and coordinates, including for events
+Reruns refresh event descriptions and the demo venues' addresses and coordinates, including for events
 already loaded. PostgreSQL regenerates their PostGIS geography automatically.
 Existing raw audit payloads retain the original records from their initial load.
+Synthetic category-vector content hashes are refreshed for updated demo descriptions;
+real model embeddings are not changed.
 
 In pgAdmin connect to localhost port **5433** using your `.env` credentials, then
 open `golocal > Schemas > public > Tables`. Right-click `events`, choose
