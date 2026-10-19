@@ -62,6 +62,14 @@ build need internet access; no API key is needed.
    `Demo events inserted: 0; already present: 25.` Verification checks extensions
    and foundation seeds, not the event count; the query below shows the events.
 
+4. When you're done, stop the database while keeping its data:
+
+   ```powershell
+   docker compose stop
+   ```
+
+   Expected: the database container stops; its data remains in the Docker volume.
+
 Full implementation details are in [the data layer reference](docs/data-layer.md).
 
 ## Connecting
@@ -101,6 +109,9 @@ WHERE e.source_name = 'goLocal fictional demo fixtures'
 ORDER BY e.start_time;
 ```
 
+For a Python connection and parameterized query, see the
+[backend example](docs/data-layer.md#python-database-connection-example).
+
 Expected after demo seeding: 25 rows. The displayed `local_start` is converted to
 the venue city's timezone; stored event instants remain timezone-aware timestamps.
 
@@ -128,7 +139,7 @@ are 15-dimensional category indicators, not semantic embeddings.
 ## Refreshing the demo dates
 
 The default anchor is 2026-10-19; events run from 20 October through 13 November
-2026. After that they are past events. Rerunning the seed refreshes descriptions
+2026. These are events 1 to 25 days after the anchor date. After that they are past events. Rerunning the seed refreshes descriptions
 and venue locations, but **never changes existing event dates or status**.
 `--base-date YYYY-MM-DD` affects only missing event fixtures.
 

@@ -9,6 +9,7 @@
 - [Normalization and validation](#normalization-and-validation)
 - [Demo seed details](#demo-seed-details)
 - [Demo users, activity, and vectors](#demo-users-activity-and-vectors)
+- [Python database connection example](#python-database-connection-example)
 - [Functions the backend will call](#functions-the-backend-will-call)
 - [Layout and roadmap](#layout-and-roadmap)
 - [Documentation verification notes](#documentation-verification-notes)
@@ -261,6 +262,49 @@ is the genuine migration history and is not filled with fake entries. PostGIS-ow
 tables in `tiger`, `topology`, and other extension schemas are outside this dataset.
 In pgAdmin refresh `public > Tables`, then use **View/Edit Data > All Rows**.
 
+## Python database connection example
+
+Run from the repository root using the installed project environment. `load_dotenv`
+reads the local `.env`; an existing `DATABASE_URL` environment variable takes
+precedence. This example returns up to five fictional events as dictionaries.
+
+```python
+import os
+
+import psycopg
+from dotenv import load_dotenv
+from psycopg.rows import dict_row
+
+load_dotenv(".env", override=False)
+
+with psycopg.connect(
+    os.environ["DATABASE_URL"], row_factory=dict_row, connect_timeout=5
+) as connection:
+    connection.execute("SET TRANSACTION READ ONLY")
+    with connection.cursor() as cursor:
+        cursor.execute(
+            """SELECT e.id, e.title, e.description, e.start_time,
+                      e.price_min, e.currency, v.name AS venue,
+                      v.address, v.latitude, v.longitude, e.source_url
+               FROM events e
+               JOIN venues v ON v.id = e.venue_id
+               WHERE e.source_name = %s
+               ORDER BY e.start_time, e.id
+               LIMIT %s""",
+            ("goLocal fictional demo fixtures", 5),
+        )
+        events = cursor.fetchall()
+
+for event in events:
+    print(event["id"], event["title"])
+```
+
+Expected after demo seeding: five lines of event IDs and `[DEMO]` titles; IDs depend
+on the database. The context managers close the cursor and connection. Query values
+are passed separately through `%s` placeholders; never interpolate user input into
+SQL. Keep `DATABASE_URL`, `.env`, and connection exceptions containing credentials
+out of shared logs. This is a synchronous database example, not a FastAPI endpoint.
+
 ## Functions the backend will call
 
 | Planned function | Status |
@@ -270,7 +314,8 @@ In pgAdmin refresh `public > Tables`, then use **View/Edit Data > All Rows**.
 | `explain` | NOT IMPLEMENTED YET |
 
 These names describe planned integration points, not callable functions or agreed
-signatures. `docs/api-contract.md` does not exist in this repository. Use the README
+signatures. A proposed contract is now in [api-contract.md](api-contract.md) and
+requires team review before agreement. Use the README
 SQL query as a starting point for reading events; use parameterized queries when
 adding user-supplied filters. The normalization functions above are available now.
 
