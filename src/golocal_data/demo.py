@@ -42,8 +42,9 @@ def build_demo_events(records, *, base_date: date, now: datetime, city_id: int,
 
 
 def seed_demo_events(connection, records, *, base_date: date, now: datetime):
-    """Atomically add missing fixtures; refresh demo venue locations while keeping existing fixture IDs and dates."""
+    """Atomically add missing fixtures; refresh demo descriptions and locations, retaining existing IDs and dates."""
     from psycopg.types.json import Jsonb
+    from .demo_activity import SYNTHETIC_MODEL, embedding_content_hash
 
     inserted = 0
     with connection.transaction():
@@ -71,6 +72,20 @@ def seed_demo_events(connection, records, *, base_date: date, now: datetime):
                 (source_id, event.external_id),
             ).fetchone()
             if existing:
+                connection.execute(
+                    """UPDATE events SET description = %s WHERE id = %s
+                        AND description IS DISTINCT FROM %s""",
+                    (event.description, existing[0], event.description),
+                )
+                # Category-only demo vectors remain valid when prose changes.
+                # Never relabel a real model's embedding as up to date.
+                connection.execute(
+                    """UPDATE event_embeddings SET content_hash = %s
+                    WHERE event_id = %s AND model = %s
+                        AND content_hash IS DISTINCT FROM %s""",
+                    (embedding_content_hash(event.title, event.description), existing[0],
+                     SYNTHETIC_MODEL, embedding_content_hash(event.title, event.description)),
+                )
                 # Refresh only the venue linked to this specific fictional source record.
                 connection.execute(
                     """UPDATE venues SET address = %s, latitude = %s, longitude = %s

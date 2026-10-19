@@ -21,6 +21,7 @@ def build(records=None, now=NOW):
 def test_handwritten_fixtures_validate_and_cover_demo_cases():
     events = build()
     assert len(events) == 25
+    assert all(80 <= len(event.description.split()) <= 130 for event in events)
     assert len({e.external_id for e in events}) == 25
     assert {e.category for e in events} == CATEGORIES
     assert len({e.venue_name for e in events}) == 6
@@ -85,4 +86,10 @@ def test_existing_records_are_not_inserted_again():
     updates = [call for call in conn.execute.call_args_list if "UPDATE venues" in call.args[0]]
     assert len(updates) == 25
     assert updates[0].args[1] == ("FICTIONAL: 1 Demo Lantern Lane", 41.7151, 44.8271, 10, 1, "Demo Lantern Hall")
+    description_updates = [call for call in conn.execute.call_args_list if "UPDATE events SET description" in call.args[0]]
+    assert len(description_updates) == 25
+    assert description_updates[0].args[1] == (build()[0].description, 10, build()[0].description)
+    hash_updates = [call for call in conn.execute.call_args_list if "UPDATE event_embeddings" in call.args[0]]
+    assert len(hash_updates) == 25
+    assert hash_updates[0].args[1][2] == "demo-category-onehot-v1-NOT-SEMANTIC"
     conn.transaction.assert_called_once()
