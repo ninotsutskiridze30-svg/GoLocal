@@ -101,6 +101,9 @@ WHERE e.source_name = 'goLocal fictional demo fixtures'
 ORDER BY e.start_time;
 ```
 
+For a Python connection and parameterized query, see the
+[backend example](docs/data-layer.md#python-database-connection-example).
+
 Expected after demo seeding: 25 rows. The displayed `local_start` is converted to
 the venue city's timezone; stored event instants remain timezone-aware timestamps.
 
