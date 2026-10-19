@@ -215,6 +215,42 @@ ORDER BY e.start_time;
 
 Actual data lives in the PostgreSQL Docker volume, not in Python model files.
 `events`, `venues`, `event_sources`, `raw_events`, and `sources` now support this
-demo dataset; user tables and embeddings remain empty unless populated separately.
+demo dataset; related user/activity tables can be populated with the optional command below.
 No new migration or API key is required. The seed is optional and is never run by
 migrations automatically.
+
+## Fictional users and related table data
+
+```powershell
+.\.venv\Scripts\python.exe scripts/seed_demo.py --with-activity
+```
+
+This optional command loads the events and related fixtures in one transaction.
+It is safe to rerun: existing matching rows are skipped. It adds:
+
+| Table | Demo rows |
+| --- | ---: |
+| users | 5 |
+| user_preferences | 15 |
+| saved_events | 15 |
+| user_interactions | 25 |
+| search_log | 5 |
+| event_embeddings | 25 |
+
+`data/demo_users.json` defines the fictional names, example.com addresses,
+preferences, saved-event references, and example searches. These users have no
+passwords or login functionality. Interaction timestamps and search timestamps
+are fixed at 2026-10-19 for repeatability. Search results refer to actual demo event
+IDs but are hand-written examples, not outputs of an implemented search service.
+`latency_ms=0` is synthetic and is not a performance measurement.
+
+Vectors are 15-dimensional category indicators labeled
+`demo-category-onehot-v1-NOT-SEMANTIC`. No LLM/embedding API is called; these are only
+for inspecting relationships and pgvector storage. Future semantic queries must
+filter by model and dimensions, and a real embedding job must explicitly replace
+these test vectors. Existing embedding rows are never overwritten by the demo seed.
+
+Every application table now has demo or foundation seed rows. `schema_migrations`
+is the genuine migration history and is not filled with fake entries. PostGIS-owned
+tables in `tiger`, `topology`, and other extension schemas are outside this dataset.
+In pgAdmin refresh `public > Tables`, then use **View/Edit Data > All Rows**.

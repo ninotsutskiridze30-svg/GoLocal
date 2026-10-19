@@ -1,0 +1,130 @@
+[
+  {
+    "name": "[DEMO] Maya Rivers",
+    "email": "demo.maya@example.com",
+    "preferences": {
+      "music": 0.95,
+      "nightlife": 0.7,
+      "social": 0.8
+    },
+    "saved": [
+      "paper-lantern-jazz",
+      "sunset-guitar",
+      "boardgame-social"
+    ],
+    "query": "[DEMO] Find free music events",
+    "filters": {
+      "max_price": 0,
+      "categories": [
+        "music"
+      ]
+    },
+    "results": [
+      "sunset-guitar"
+    ]
+  },
+  {
+    "name": "[DEMO] Leo Finch",
+    "email": "demo.leo@example.com",
+    "preferences": {
+      "technology": 0.95,
+      "workshop": 0.8,
+      "talk": 0.7
+    },
+    "saved": [
+      "python-social",
+      "robot-demo",
+      "space-talk"
+    ],
+    "query": "[DEMO] Technology meetups and workshops",
+    "filters": {
+      "categories": [
+        "technology",
+        "workshop"
+      ]
+    },
+    "results": [
+      "python-social",
+      "robot-demo",
+      "clay-cups"
+    ]
+  },
+  {
+    "name": "[DEMO] Nina Brook",
+    "email": "demo.nina@example.com",
+    "preferences": {
+      "family": 0.9,
+      "market": 0.7,
+      "festival": 0.8
+    },
+    "saved": [
+      "family-puzzles",
+      "paper-family",
+      "handmade-market"
+    ],
+    "query": "[DEMO] Family activities under 25 GEL",
+    "filters": {
+      "max_price": 25,
+      "currency": "GEL",
+      "categories": [
+        "family"
+      ]
+    },
+    "results": [
+      "family-puzzles",
+      "paper-family"
+    ]
+  },
+  {
+    "name": "[DEMO] Omar Reed",
+    "email": "demo.omar@example.com",
+    "preferences": {
+      "sports": 0.9,
+      "food": 0.8,
+      "social": 0.75
+    },
+    "saved": [
+      "morning-stretch",
+      "bread-lab",
+      "tea-conversation"
+    ],
+    "query": "[DEMO] Sports sessions under 30 GEL",
+    "filters": {
+      "max_price": 30,
+      "currency": "GEL",
+      "categories": [
+        "sports"
+      ]
+    },
+    "results": [
+      "morning-stretch",
+      "indoor-games"
+    ]
+  },
+  {
+    "name": "[DEMO] Ella Vale",
+    "email": "demo.ella@example.com",
+    "preferences": {
+      "exhibition": 0.95,
+      "film": 0.85,
+      "theatre": 0.8
+    },
+    "saved": [
+      "color-and-light",
+      "short-film-night",
+      "story-stage"
+    ],
+    "query": "[DEMO] Exhibitions and films",
+    "filters": {
+      "categories": [
+        "exhibition",
+        "film"
+      ]
+    },
+    "results": [
+      "color-and-light",
+      "photo-walk-exhibit",
+      "short-film-night"
+    ]
+  }
+]
