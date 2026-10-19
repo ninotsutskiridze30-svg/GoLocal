@@ -165,3 +165,50 @@ Run all offline checks:
 ```
 
 Phase 2 requires no migration, database restart, API key, or source access.
+
+## Current milestone: 25 fictional events
+
+Real-source collection and later AI phases are paused. The current deliverable is
+schema + Docker PostgreSQL + a small fictional dataset for browsing and integration.
+
+`data/demo_events.json` contains 25 hand-written fictional records with 15 categories,
+six fictional venues, and free, paid, and unknown prices. All titles begin `[DEMO]`;
+descriptions also identify the fiction. URLs are placeholders on `example.com`.
+No real events, venues, coordinates, source fetching, or embeddings are included.
+
+Load them after migrations:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/seed_demo.py
+```
+
+Expected first run: `Demo events inserted: 25; already present: 0.`
+Rerunning prints `Demo events inserted: 0; already present: 25.`
+The seed uses a transaction and lock, validates with `NormalizedEvent`, and records
+source provenance plus original fixture JSON. A dedicated approved `manual` source
+identifies these owner-authorized fixtures; no external source is approved.
+Dates are anchored to 2026-10-19, with events 1-25 days later in the seeded city's
+timezone. For a fresh dataset later, supply `--base-date YYYY-MM-DD`. This affects
+only missing fixtures; existing events are deliberately left unchanged.
+
+In pgAdmin connect to localhost port **5433** using your `.env` credentials, then
+open `golocal > Schemas > public > Tables`. Right-click `events`, choose
+**View/Edit Data > All Rows**, or run this in Query Tool:
+
+```sql
+SELECT e.id, e.title, c.name AS category, v.name AS venue,
+       e.start_time AT TIME ZONE city.timezone AS local_start,
+       e.price_min, e.price_max, e.currency, e.status, e.source_url
+FROM events e
+JOIN categories c ON c.id = e.category_id
+JOIN venues v ON v.id = e.venue_id
+JOIN cities city ON city.id = v.city_id
+WHERE e.source_name = 'goLocal fictional demo fixtures'
+ORDER BY e.start_time;
+```
+
+Actual data lives in the PostgreSQL Docker volume, not in Python model files.
+`events`, `venues`, `event_sources`, `raw_events`, and `sources` now support this
+demo dataset; user tables and embeddings remain empty unless populated separately.
+No new migration or API key is required. The seed is optional and is never run by
+migrations automatically.
