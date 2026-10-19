@@ -5,6 +5,15 @@ plan and project specification. Archil (backend), Ani (frontend), and Nino (Data
 must review before treating it as agreed. This document defines proposed interfaces;
 it does not implement endpoints, AI functions, or authentication.
 
+**Implementation note (2026-10-19):** The approved bounded Python slice in
+`src/golocal_data/discovery.py` now implements `parse_query(query)`,
+`search_events(filters, query_embedding=None)`, and batched
+`explain(query, candidates)`. Its database source is the committed fictional JSON
+fixture, and the batch explanation makes at most one Gemini call. The signatures,
+20-result pagination, scoring, HTTP 422, and endpoint shapes below remain proposals,
+not descriptions of implemented behavior. `docs/spec.md` records the accepted
+first-slice limits; a public API contract still needs team review.
+
 ## Shared conventions
 
 - JSON field names use snake_case. Unknown request fields are rejected.

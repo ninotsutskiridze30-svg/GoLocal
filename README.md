@@ -9,8 +9,9 @@ Available: versioned schema, Docker PostgreSQL with PostGIS and pgvector,
 normalization/validation functions, 25 fictional events with six demo venues,
 and optional fictional users and activity.
 
-Not implemented yet: real-source collectors, real embeddings, LLM query parser,
-and a search function.
+Not implemented yet: real-source collectors, real embeddings, and an HTTP application.
+The bounded Python discovery path uses a deterministic query parser, PostgreSQL
+search over demo rows, and one Gemini call for up to three Georgian reasons.
 
 **All demo data is fictional.** Event titles start with `[DEMO]`, URLs are
 placeholders on `example.com`, coordinates are test points, and optional demo
@@ -114,6 +115,26 @@ For a Python connection and parameterized query, see the
 
 Expected after demo seeding: 25 rows. The displayed `local_start` is converted to
 the venue city's timezone; stored event instants remain timezone-aware timestamps.
+
+## Try the Python discovery slice
+
+The discovery functions are in `src/golocal_data/discovery.py`:
+`parse_query(query)` extracts conservative hard filters;
+`search_events(filters)` reads up to 12 active demo candidates from PostgreSQL;
+`explain(query, candidates)` sends them in one Gemini 3.1 Flash-Lite request and
+keeps only unique IDs returned from those candidates. `recommend(query)` connects
+the three. No real embedding request is made. Gemini uses `GOOGLE_API_KEY` from
+the process environment; for the local CLI, put it in ignored `.env` and run:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/recommend.py "ჯაზი"
+```
+
+The command prints up to three labeled demo results. It makes no model request for
+blank input or zero database candidates. Each nonempty candidate set makes at
+most one request; a model failure returns a sanitized error. The source links are
+`example.com` placeholders and must not be presented as ticket links. This CLI
+is not an HTTP service; the HTTP 400 acceptance criterion remains open.
 
 ## Optional demo users and activity
 
