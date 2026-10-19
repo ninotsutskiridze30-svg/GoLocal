@@ -32,6 +32,7 @@ def build_demo_events(records, *, base_date: date, now: datetime, city_id: int,
         events.append(NormalizedEvent(
             title=record["title"], description=record["description"], category=record["category"],
             city_id=city_id, venue_name=record["venue_name"], start_time=start, end_time=end,
+            venue_address=record["venue_address"], latitude=record["latitude"], longitude=record["longitude"],
             price_min=normalize_price(record["price_min"]), price_max=normalize_price(record["price_max"]),
             currency=record["currency"], source_id=source_id, source_name=SOURCE_NAME,
             source_url=SOURCE_URL + record["external_id"], external_id=record["external_id"],
@@ -41,7 +42,7 @@ def build_demo_events(records, *, base_date: date, now: datetime, city_id: int,
 
 
 def seed_demo_events(connection, records, *, base_date: date, now: datetime):
-    """Atomically add missing fixtures; existing fixture IDs and dates remain unchanged."""
+    """Atomically add missing fixtures; refresh demo venue locations while keeping existing fixture IDs and dates."""
     from psycopg.types.json import Jsonb
 
     inserted = 0
@@ -70,6 +71,14 @@ def seed_demo_events(connection, records, *, base_date: date, now: datetime):
                 (source_id, event.external_id),
             ).fetchone()
             if existing:
+                # Refresh only the venue linked to this specific fictional source record.
+                connection.execute(
+                    """UPDATE venues SET address = %s, latitude = %s, longitude = %s
+                    WHERE id = (SELECT venue_id FROM events WHERE id = %s)
+                        AND city_id = %s AND name = %s""",
+                    (event.venue_address, event.latitude, event.longitude,
+                     existing[0], event.city_id, event.venue_name),
+                )
                 continue
             venue = connection.execute(
                 "SELECT id FROM venues WHERE city_id = %s AND name = %s ORDER BY id LIMIT 1",
@@ -79,6 +88,10 @@ def seed_demo_events(connection, records, *, base_date: date, now: datetime):
                 "INSERT INTO venues (city_id, name) VALUES (%s, %s) RETURNING id",
                 (event.city_id, event.venue_name),
             ).fetchone()[0]
+            connection.execute(
+                "UPDATE venues SET address = %s, latitude = %s, longitude = %s WHERE id = %s",
+                (event.venue_address, event.latitude, event.longitude, venue_id),
+            )
             event_id = connection.execute(
                 """INSERT INTO events (title, description, category_id, venue_id, start_time,
                     end_time, price_min, price_max, currency, source_url, source_name, status)

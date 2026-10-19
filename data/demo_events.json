@@ -10,7 +10,10 @@
     "end_local": "21:00",
     "price_min": "20",
     "price_max": "35",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 1 Demo Lantern Lane",
+    "latitude": 41.7151,
+    "longitude": 44.8271
   },
   {
     "external_id": "rooftop-dance",
@@ -23,7 +26,10 @@
     "end_local": "23:00",
     "price_min": "25",
     "price_max": "25",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 2 Demo Skyline Walk",
+    "latitude": 41.7221,
+    "longitude": 44.7901
   },
   {
     "external_id": "color-and-light",
@@ -36,7 +42,10 @@
     "end_local": "18:00",
     "price_min": "0",
     "price_max": "0",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 3 Demo Canvas Court",
+    "latitude": 41.7081,
+    "longitude": 44.8001
   },
   {
     "external_id": "tiny-stage",
@@ -49,7 +58,10 @@
     "end_local": "21:00",
     "price_min": "15",
     "price_max": "25",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 1 Demo Lantern Lane",
+    "latitude": 41.7151,
+    "longitude": 44.8271
   },
   {
     "external_id": "clay-cups",
@@ -62,7 +74,10 @@
     "end_local": "16:00",
     "price_min": "40",
     "price_max": "40",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 4 Demo Makers Avenue",
+    "latitude": 41.7301,
+    "longitude": 44.7701
   },
   {
     "external_id": "python-social",
@@ -75,7 +90,10 @@
     "end_local": "20:00",
     "price_min": "0",
     "price_max": "0",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 4 Demo Makers Avenue",
+    "latitude": 41.7301,
+    "longitude": 44.7701
   },
   {
     "external_id": "morning-stretch",
@@ -88,7 +106,10 @@
     "end_local": "10:00",
     "price_min": "10",
     "price_max": "10",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 5 Demo Garden Path",
+    "latitude": 41.7401,
+    "longitude": 44.8101
   },
   {
     "external_id": "autumn-mini-fest",
@@ -101,7 +122,10 @@
     "end_local": "19:00",
     "price_min": "30",
     "price_max": "50",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 5 Demo Garden Path",
+    "latitude": 41.7401,
+    "longitude": 44.8101
   },
   {
     "external_id": "handmade-market",
@@ -114,7 +138,10 @@
     "end_local": "17:00",
     "price_min": "0",
     "price_max": "0",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 5 Demo Garden Path",
+    "latitude": 41.7401,
+    "longitude": 44.8101
   },
   {
     "external_id": "family-puzzles",
@@ -127,7 +154,10 @@
     "end_local": "16:00",
     "price_min": "12",
     "price_max": "20",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 1 Demo Lantern Lane",
+    "latitude": 41.7151,
+    "longitude": 44.8271
   },
   {
     "external_id": "space-talk",
@@ -140,7 +170,10 @@
     "end_local": "19:30",
     "price_min": "0",
     "price_max": "0",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 4 Demo Makers Avenue",
+    "latitude": 41.7301,
+    "longitude": 44.7701
   },
   {
     "external_id": "short-film-night",
@@ -153,7 +186,10 @@
     "end_local": "21:00",
     "price_min": "15",
     "price_max": "15",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 3 Demo Canvas Court",
+    "latitude": 41.7081,
+    "longitude": 44.8001
   },
   {
     "external_id": "bread-lab",
@@ -166,7 +202,10 @@
     "end_local": "18:00",
     "price_min": "35",
     "price_max": "45",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 6 Demo Kitchen Street",
+    "latitude": 41.7001,
+    "longitude": 44.8151
   },
   {
     "external_id": "boardgame-social",
@@ -179,7 +218,10 @@
     "end_local": "21:00",
     "price_min": "10",
     "price_max": "10",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 6 Demo Kitchen Street",
+    "latitude": 41.7001,
+    "longitude": 44.8151
   },
   {
     "external_id": "mystery-activity",
@@ -192,7 +234,10 @@
     "end_local": "17:00",
     "price_min": null,
     "price_max": null,
-    "currency": null
+    "currency": null,
+    "venue_address": "FICTIONAL: 4 Demo Makers Avenue",
+    "latitude": 41.7301,
+    "longitude": 44.7701
   },
   {
     "external_id": "sunset-guitar",
@@ -205,7 +250,10 @@
     "end_local": "19:00",
     "price_min": "0",
     "price_max": "0",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 5 Demo Garden Path",
+    "latitude": 41.7401,
+    "longitude": 44.8101
   },
   {
     "external_id": "quiet-sketching",
@@ -218,7 +266,10 @@
     "end_local": "11:00",
     "price_min": "8",
     "price_max": "8",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 3 Demo Canvas Court",
+    "latitude": 41.7081,
+    "longitude": 44.8001
   },
   {
     "external_id": "robot-demo",
@@ -231,7 +282,10 @@
     "end_local": "16:00",
     "price_min": null,
     "price_max": null,
-    "currency": null
+    "currency": null,
+    "venue_address": "FICTIONAL: 4 Demo Makers Avenue",
+    "latitude": 41.7301,
+    "longitude": 44.7701
   },
   {
     "external_id": "indoor-games",
@@ -244,7 +298,10 @@
     "end_local": "13:00",
     "price_min": "18",
     "price_max": "25",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 2 Demo Skyline Walk",
+    "latitude": 41.7221,
+    "longitude": 44.7901
   },
   {
     "external_id": "story-stage",
@@ -257,7 +314,10 @@
     "end_local": "20:00",
     "price_min": "22",
     "price_max": "22",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 1 Demo Lantern Lane",
+    "latitude": 41.7151,
+    "longitude": 44.8271
   },
   {
     "external_id": "photo-walk-exhibit",
@@ -270,7 +330,10 @@
     "end_local": "17:00",
     "price_min": "5",
     "price_max": "5",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 3 Demo Canvas Court",
+    "latitude": 41.7081,
+    "longitude": 44.8001
   },
   {
     "external_id": "tea-conversation",
@@ -283,7 +346,10 @@
     "end_local": "19:00",
     "price_min": "14",
     "price_max": "14",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 6 Demo Kitchen Street",
+    "latitude": 41.7001,
+    "longitude": 44.8151
   },
   {
     "external_id": "paper-family",
@@ -296,7 +362,10 @@
     "end_local": "12:30",
     "price_min": "16",
     "price_max": "24",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 4 Demo Makers Avenue",
+    "latitude": 41.7301,
+    "longitude": 44.7701
   },
   {
     "external_id": "late-electronic",
@@ -309,7 +378,10 @@
     "end_local": "23:00",
     "price_min": "28",
     "price_max": "40",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 2 Demo Skyline Walk",
+    "latitude": 41.7221,
+    "longitude": 44.7901
   },
   {
     "external_id": "local-ideas",
@@ -322,6 +394,9 @@
     "end_local": "20:00",
     "price_min": "0",
     "price_max": "0",
-    "currency": "GEL"
+    "currency": "GEL",
+    "venue_address": "FICTIONAL: 1 Demo Lantern Lane",
+    "latitude": 41.7151,
+    "longitude": 44.8271
   }
 ]

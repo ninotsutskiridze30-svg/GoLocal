@@ -24,6 +24,7 @@ class NormalizedEvent(BaseModel):
     category: str = "other"
     city_id: PositiveId
     venue_name: str
+    venue_address: str | None = None
     start_time: datetime
     end_time: datetime | None = None
     price_min: Decimal | None = None
@@ -39,7 +40,7 @@ class NormalizedEvent(BaseModel):
     longitude: float | None = Field(default=None, ge=-180, le=180, allow_inf_nan=False)
     status: Literal["active", "expired", "cancelled"] = "active"
 
-    @field_validator("title", "venue_name", "source_name", "external_id")
+    @field_validator("title", "venue_name", "source_name", "external_id", "venue_address")
     @classmethod
     def text_fields(cls, value):
         return normalize_text(value) if value is not None else None

@@ -24,6 +24,11 @@ def test_handwritten_fixtures_validate_and_cover_demo_cases():
     assert len({e.external_id for e in events}) == 25
     assert {e.category for e in events} == CATEGORIES
     assert len({e.venue_name for e in events}) == 6
+    assert all(e.venue_address.startswith("FICTIONAL:") for e in events)
+    assert all(e.latitude is not None and e.longitude is not None for e in events)
+    assert len({(e.latitude, e.longitude) for e in events}) == 6
+    for venue in {e.venue_name for e in events}:
+        assert len({(e.venue_address, e.latitude, e.longitude) for e in events if e.venue_name == venue}) == 1
     assert any(e.price_min is None for e in events)
     assert any(e.price_min == Decimal("0") for e in events)
     assert any(e.price_min and e.price_max > e.price_min for e in events)
@@ -38,6 +43,7 @@ def test_build_is_deterministic_and_old_fixtures_are_expired():
 
 
 @pytest.mark.parametrize("field,value", [("title", "Real-looking title"),
+    ("latitude", 91.0), ("longitude", None),
     ("description", "Not labeled"), ("price_min", "unknown"), ("end_local", "01:00")])
 def test_invalid_fixture_is_rejected(field, value):
     records = load_demo_records(FIXTURES)
@@ -76,4 +82,7 @@ def test_existing_records_are_not_inserted_again():
     assert seed_demo_events(conn, load_demo_records(FIXTURES), base_date=date(2026,10,19), now=NOW) == 0
     statements = [call.args[0] for call in conn.execute.call_args_list]
     assert not any("INSERT INTO events " in sql or "INSERT INTO raw_events" in sql for sql in statements)
+    updates = [call for call in conn.execute.call_args_list if "UPDATE venues" in call.args[0]]
+    assert len(updates) == 25
+    assert updates[0].args[1] == ("FICTIONAL: 1 Demo Lantern Lane", 41.7151, 44.8271, 10, 1, "Demo Lantern Hall")
     conn.transaction.assert_called_once()
