@@ -97,3 +97,71 @@ embeddings, validated LLM parsing, hybrid ranking, and teammate integration docs
 Each phase stops for review after tests and a small feature-branch commit.
 
 Docker references checked during implementation: [PostGIS image](https://github.com/postgis/docker-postgis) and [pgvector build instructions](https://github.com/pgvector/pgvector).
+
+## Phase 2: pure normalization and validation
+
+`golocal_data.normalization` exposes:
+
+- `normalize_datetime(value, *, source_timezone=None, fold=None)` -> UTC datetime.
+  Accepts a datetime or ISO date-time with an explicit time. Naive input requires
+  an IANA timezone supplied from source/city configuration. Repeated DST times
+  need an explicit fold; nonexistent local times and date-only input are rejected.
+- `normalize_price(value)` -> Decimal or None. Accepts decimal text, integers,
+  and Decimal; rejects floats, negative/nonfinite amounts, and precision that
+  cannot fit `numeric(12,2)`. None means unknown; explicit zero means free.
+- `normalize_currency(value, *, allowed=None)` -> uppercase code or None.
+  Validates three-letter syntax; `allowed` can restrict to the caller's configured
+  registry. Syntax alone does not prove a code is an assigned currency.
+- `normalize_url(value, *, base_url=None)` -> absolute HTTP(S) URL. Resolves
+  relative links only with an explicit base, removes fragments/default ports,
+  and preserves path/query data. Rejects credentials and malformed URLs.
+  It does not fetch, check robots, approve hosts, or establish network safety.
+- `normalize_text(value, *, required=True)`, `normalize_venue_name(value)`,
+  `venue_match_key(value)` -> Unicode/whitespace-normalized text and a casefolded
+  candidate key. No translation, HTML execution, or destructive venue merging.
+- `normalize_category(value, *, aliases=None, allowed=CATEGORIES)` -> canonical
+  category; unknown labels become `other`. Default aliases are product mappings;
+  verified source-specific mappings belong in collector configuration.
+
+Collectors must parse verified source formats before calling these functions.
+Do not guess whether `03/04` means March 4 or April 3, infer currency from `$`,
+turn an unknown price into zero, or invent a time for a date-only event.
+These functions raise `ValueError` for invalid or insufficient input.
+
+`golocal_data.models.NormalizedEvent` provides the canonical event contract.
+It forbids extra fields and accidental type coercion, validates provenance,
+normalizes aware instants to UTC, checks price/end-time ordering and coordinate
+pairs, and is immutable. It raises Pydantic `ValidationError` on invalid records.
+It carries city/source identifiers; the future loader verifies their database
+existence and source approval. Text is inert, untrusted data: rendering consumers
+must escape it, and LLM consumers must not treat it as instructions.
+
+Example with synthetic data (no network or database needed):
+
+```python
+from datetime import datetime, timezone
+from golocal_data.models import NormalizedEvent
+from golocal_data.normalization import normalize_datetime, normalize_price
+
+event = NormalizedEvent(
+    title="Example concert", city_id=1, venue_name="Example Hall",
+    start_time=normalize_datetime("2026-10-20T19:00", source_timezone="Asia/Tbilisi"),
+    price_min=normalize_price("0"), currency="GEL", category="music",
+    source_id=1, source_name="Synthetic example",
+    source_url="https://example.com/events/1",
+    fetched_at=datetime.now(timezone.utc),
+)
+```
+
+`event_has_finished(event, *, now)` returns True when the known end time is
+reached, False before it, and None when the end is unknown. It never reads the
+system clock or changes event status. The loader phase will define the policy
+for events missing an end time before implementing automatic expiry.
+
+Run all offline checks:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q
+```
+
+Phase 2 requires no migration, database restart, API key, or source access.
