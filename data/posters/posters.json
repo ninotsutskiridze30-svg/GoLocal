@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "dataset_role": "Manual transcription of five user-supplied poster images for review. This is not a live listing or a database seed.",
+  "conventions": {
+    "missing_value": "null means the poster does not visibly state the value or it cannot be read reliably.",
+    "dates": "Do not infer a year when the poster does not print one.",
+    "evidence": "field_evidence quotes text visible on the poster; ticket logos are not source URLs.",
+    "times": "displayed_time preserves the printed time; time_role says whether the poster explicitly identifies it as doors opening."
+  },
+  "posters": [
+    {
+      "poster_id": "ucnobi-mtskheta",
+      "image_file": "141a0431-7dd3-46dc-a86b-5f8a2e8f8af6.jpg",
+      "image_sha256": "2CEEB568E3648AA6B9D1EB971D3DDD1A0FB2F433BF1E7A970501E36C362A15F6",
+      "poster_kind": "single_event",
+      "source_url": null,
+      "ticket_platform": null,
+      "ticket_price": null,
+      "contact_phone": "598437877",
+      "festival": null,
+      "events": [
+        {
+          "title": "UCNOBI",
+          "date_text": "24 ოქტომბერი",
+          "date_iso": null,
+          "year_visible": false,
+          "displayed_time": "21:00",
+          "time_role": "listed_time_not_explicitly_labeled",
+          "doors_open_time": null,
+          "venue": "მცხეთა თეატრონი",
+          "city": "მცხეთა",
+          "performers": [
+            "UCNOBI",
+            "BAND UCNOBI SAKARTVELO"
+          ],
+          "special_guests": [
+            "PANCHO",
+            "REZO DA BAVSHVEBI"
+          ],
+          "lineup": [],
+          "program_items": [],
+          "films_named_on_poster": [],
+          "other_visible_labels": [],
+          "description": "UCNOBI / Band Ucnobi Sakartvelo-ს ღონისძიების აფიშაზე მითითებულია 24 ოქტომბერი, 21:00 და მცხეთა თეატრონი. სპეციალური სტუმრები არიან Pancho და Rezo Da Bavshvebi.",
+          "field_evidence": {
+            "title": "UCNOBI / BAND UCNOBI SAKARTVELO",
+            "date": "24 ოქტომბერი",
+            "time": "21:00",
+            "venue": "მცხეთა / თეატრონი",
+            "special_guests": "SPECIAL GUEST: PANCHO / REZO DA BAVSHVEBI",
+            "contact_phone": "MORE INFO: 598437877"
+          }
+        }
+      ],
+      "review_notes": [
+        "Poster does not print the year.",
+        "The printed 21:00 is not labeled as doors or start time."
+      ]
+    },
+    {
+      "poster_id": "nino-kvantrishvili-sere",
+      "image_file": "498ee7d6-d3ed-4b7f-8c6f-b69554dd2573.jpg",
+      "image_sha256": "CDE9D3EA775195796D39322939FBD5F4AD3276DE05871AE31BF05E68496ABEA5",
+      "poster_kind": "single_event",
+      "source_url": null,
+      "ticket_platform": null,
+      "ticket_price": null,
+      "contact_phone": null,
+      "festival": null,
+      "events": [
+        {
+          "title": "NINO KVANTRISHVILI",
+          "date_text": "23 OCTOBER",
+          "date_iso": null,
+          "year_visible": false,
+          "displayed_time": "23:00",
+          "time_role": "doors_open",
+          "doors_open_time": "23:00",
+          "venue": "SERE",
+          "city": null,
+          "performers": [
+            "NINO KVANTRISHVILI"
+          ],
+          "special_guests": [
+            "MERAB SEPASHVILI"
+          ],
+          "lineup": [],
+          "program_items": [],
+          "films_named_on_poster": [],
+          "other_visible_labels": [],
+          "description": "Nino Kvantrishvili-ის აფიშაზე მითითებულია 23 October და SERE. სპეციალური სტუმარია Merab Sepashvili; კარი იღება 23:00-ზე. კონცერტის დაწყების დრო არ არის მითითებული.",
+          "field_evidence": {
+            "title": "NINO KVANTRISHVILI",
+            "date": "23 OCTOBER",
+            "venue": "AT SERE",
+            "special_guest": "SPECIAL GUEST MERAB SEPASHVILI",
+            "doors_open_time": "DOORS OPEN — 23:00"
+          }
+        }
+      ],
+      "review_notes": [
+        "Poster does not print the year.",
+        "23:00 is doors opening, not a confirmed event start time.",
+        "City is not printed."
+      ]
+    },
+    {
+      "poster_id": "ika-gagliashvili-la-vie",
+      "image_file": "103929e6-7a50-4a19-8d59-f673b0344d16.jpg",
+      "image_sha256": "C92FF9BCC46CB735AEF1974F5BF0F9454B7A746EBE36188D6B0428C65F08709D",
+      "poster_kind": "single_event",
+      "source_url": null,
+      "ticket_platform": "TKT.GE",
+      "ticket_price": null,
+      "contact_phone": null,
+      "festival": null,
+      "events": [
+        {
+          "title": "IKA GAGLIASHVILI",
+          "date_text": "21 OCT",
+          "date_iso": null,
+          "year_visible": false,
+          "displayed_time": "23:00",
+          "time_role": "listed_time_not_explicitly_labeled",
+          "doors_open_time": null,
+          "venue": null,
+          "city": null,
+          "performers": [
+            "IKA GAGLIASHVILI"
+          ],
+          "special_guests": [],
+          "lineup": [
+            "VALENTINA B2B NUTSB",
+            "GEDONIST"
+          ],
+          "program_items": [],
+          "films_named_on_poster": [],
+          "other_visible_labels": [
+            "La Vie Project",
+            "TKT.GE"
+          ],
+          "description": "Ika Gagliashvili-ის აფიშაზე მითითებულია 21 Oct, 23:00 და lineup: Valentina B2B NutsB, Gedonist. ჩანს La Vie Project-ისა და TKT.GE-ის ნიშნები; venue არ არის დასახელებული.",
+          "field_evidence": {
+            "title": "IKA GAGLIASHVILI",
+            "date": "21 OCT",
+            "time": "23:00",
+            "lineup": "LINEUP / VALENTINA B2B NUTSB / GEDONIST",
+            "other_labels": "La Vie Project / TKT.GE"
+          }
+        }
+      ],
+      "review_notes": [
+        "Poster does not print the year or venue.",
+        "La Vie Project appears as a logo; its role is not stated.",
+        "TKT.GE logo is not an event source URL.",
+        "The printed 23:00 is not labeled as doors or start time."
+      ]
+    },
+    {
+      "poster_id": "music-of-animation",
+      "image_file": "336c12f0-7211-4a56-8eab-112ef07816a8.jpg",
+      "image_sha256": "D80FEDC6B9B636CEE89AFB68C10A20CB07891633FF4AF8FEC6D9AA4B94457188",
+      "poster_kind": "single_event",
+      "source_url": null,
+      "ticket_platform": null,
+      "ticket_price": null,
+      "contact_phone": null,
+      "festival": null,
+      "events": [
+        {
+          "title": "THE MUSIC OF ANIMATION IN CONCERT",
+          "date_text": "22 OCTOBER",
+          "date_iso": null,
+          "year_visible": false,
+          "displayed_time": "17:00",
+          "time_role": "listed_time_not_explicitly_labeled",
+          "doors_open_time": null,
+          "venue": "TBILISI STATE CONSERVATOIRE GRAND HALL",
+          "city": "Tbilisi",
+          "performers": [],
+          "special_guests": [],
+          "lineup": [],
+          "program_items": [],
+          "films_named_on_poster": [
+            "Beauty & the Beast",
+            "Coco",
+            "Frozen",
+            "Brave",
+            "The Lion King",
+            "Aladdin",
+            "The Little Mermaid",
+            "Toy Story",
+            "Moana",
+            "Madagascar",
+            "How to Train Your Dragon",
+            "Shrek"
+          ],
+          "other_visible_labels": [
+            "TBILISI FILM ORCHESTRA"
+          ],
+          "description": "The Music of Animation in Concert-ის აფიშაზე მითითებულია 22 October, 17:00 და Tbilisi State Conservatoire Grand Hall. სახელდებით ჩამოთვლილია The Lion King, Toy Story, Coco, The Little Mermaid, Frozen და კიდევ შვიდი ანიმაციური ფილმი. ჩანს Tbilisi Film Orchestra-ის ლოგო.",
+          "field_evidence": {
+            "title": "THE MUSIC OF ANIMATION IN CONCERT",
+            "date_and_time": "22 OCTOBER, 17:00",
+            "venue": "TBILISI STATE CONSERVATOIRE GRAND HALL",
+            "films": "BEAUTY & THE BEAST, COCO, FROZEN, BRAVE / THE LION KING, ALADDIN, THE LITTLE MERMAID, TOY STORY / MOANA, MADAGASCAR, HOW TO TRAIN YOUR DRAGON, SHREK",
+            "organization_logo": "TBILISI FILM ORCHESTRA"
+          }
+        }
+      ],
+      "review_notes": [
+        "Poster does not print the year.",
+        "The Tbilisi Film Orchestra logo is visible, but no organizer or performer role is explicitly stated.",
+        "The printed 17:00 is not labeled as doors or start time."
+      ]
+    },
+    {
+      "poster_id": "tengiz-amirejibi-festival",
+      "image_file": "4e841b81-ea09-4527-a11c-51835d06f25e.jpg",
+      "image_sha256": "CBBBB0AFF1BAAB44A713E99C6BA7E809EB4104754B2B44C6786CB70492E9E30E",
+      "poster_kind": "festival_program",
+      "source_url": null,
+      "ticket_platform": null,
+      "ticket_price": null,
+      "contact_phone": null,
+      "festival": {
+        "title": "თენგიზ ამირეჯიბის სახელობის XIV საერთაშორისო მუსიკალური ფესტივალი",
+        "date_range_start": "2026-10-18",
+        "date_range_end": "2026-10-25",
+        "range_evidence": "18–25 ოქტომბერი / 2026",
+        "supporters_caption": "ფესტივალის მხარდამჭერები"
+      },
+      "events": [
+        {
+          "title": "რომანტიზმიდან იმპრესიონიზმამდე",
+          "date_text": "18 ოქტომბერი",
+          "date_iso": "2026-10-18",
+          "year_visible": true,
+          "displayed_time": "19:00",
+          "time_role": "listed_session_time",
+          "doors_open_time": null,
+          "venue": null,
+          "city": null,
+          "performers": [
+            "დმიტრო ჩონი"
+          ],
+          "special_guests": [],
+          "lineup": [],
+          "program_items": [
+            "დებიუსისა და რახმანინოვის პრელუდიები"
+          ],
+          "films_named_on_poster": [],
+          "other_visible_labels": [
+            "ავსტრია"
+          ],
+          "description": "თენგიზ ამირეჯიბის სახელობის XIV საერთაშორისო მუსიკალური ფესტივალის აფიშაზე 18 ოქტომბერს, 19:00 საათზე მითითებულია დმიტრო ჩონის პროგრამა „რომანტიზმიდან იმპრესიონიზმამდე“ — დებიუსისა და რახმანინოვის პრელუდიები. ფესტივალის აფიშაზე წელი 2026 წერია.",
+          "field_evidence": {
+            "performer": "დმიტრო ჩონი / ავსტრია",
+            "title": "რომანტიზმიდან იმპრესიონიზმამდე",
+            "program": "დებიუსისა და რახმანინოვის პრელუდიები",
+            "date_and_time": "18 ოქტომბერი / 19:00"
+          }
+        },
+        {
+          "title": "მოცარტი & ბეთჰოვენი",
+          "date_text": "20 ოქტომბერი",
+          "date_iso": "2026-10-20",
+          "year_visible": true,
+          "displayed_time": "19:00",
+          "time_role": "listed_session_time",
+          "doors_open_time": null,
+          "venue": null,
+          "city": null,
+          "performers": [
+            "თამარ ლიჩელი",
+            "საქართველოს სინფონიეტა",
+            "ლორენცო დი ბელა"
+          ],
+          "special_guests": [],
+          "lineup": [],
+          "program_items": [
+            "მოცარტი",
+            "ბეთჰოვენი"
+          ],
+          "films_named_on_poster": [],
+          "other_visible_labels": [],
+          "description": "ფესტივალის აფიშაზე 20 ოქტომბერს, 19:00 საათზე მითითებულია „მოცარტი & ბეთჰოვენი“. მონაწილეებად დასახელებულია თამარ ლიჩელი, საქართველოს სინფონიეტა და ლორენცო დი ბელა. ფესტივალის აფიშაზე წელი 2026 წერია.",
+          "field_evidence": {
+            "title": "მოცარტი & ბეთჰოვენი",
+            "performers": "თამარ ლიჩელი / „საქართველოს სინფონიეტა“ / ლორენცო დი ბელა",
+            "date_and_time": "20 ოქტომბერი / 19:00"
+          }
+        }
+      ],
+      "review_notes": [
+        "The poster advertises a festival running 18–25 October 2026 but visibly details only two sessions.",
+        "No venue, ticket price, or source URL is printed for either shown session.",
+        "Supporter logos are visible; names not confidently transcribed are omitted."
+      ]
+    }
+  ]
+}
