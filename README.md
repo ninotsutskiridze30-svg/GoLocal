@@ -136,6 +136,33 @@ most one request; a model failure returns a sanitized error. The source links ar
 `example.com` placeholders and must not be presented as ticket links. This CLI
 is not an HTTP service; the HTTP 400 acceptance criterion remains open.
 
+## Read event posters locally
+
+The five manually reviewed poster images live in `data/posters/` beside
+`posters.json`. They are not demo database rows. The image reader uses the same
+Gemini 3.1 Flash-Lite model and `GOOGLE_API_KEY` process variable as discovery.
+Set the variable in your own shell before running these commands; the commands
+do not inspect or print your key:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/extract_poster.py data/posters/336c12f0-7211-4a56-8eab-112ef07816a8.jpg
+.\.venv\Scripts\python.exe scripts/evaluate_posters.py
+```
+
+The first command prints a route, human-readable flags, and a draft with
+uncertain fields empty. The second makes one model call for each of the five
+images and compares each result with the manually reviewed JSON. Differences
+are reported rather than hidden; the command exits nonzero if any differ.
+Usage lines are written to ignored `logs/poster_usage.jsonl` with tokens,
+estimated cost, and latency. Offline tests use fake model responses and need
+no key. The expected live behavior remains unverified until a successful run.
+
+The three additional phone photos are in `tests/images/candidates/`. The
+blurred poster is a degraded candidate; the handwritten poster has an unknown
+day, and the book cover includes a real author's name. They are not yet the
+four formal Lab 3 test images. See `docs/multimodal-spec.md` and
+`docs/confidence-policy.md` for fields, limitations, and review behavior.
+
 ## Optional demo users and activity
 
 ```powershell

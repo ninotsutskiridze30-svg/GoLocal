@@ -55,3 +55,11 @@ Live TKT.ge scraping; live Biletebi.ge scraping; GPS; notifications; Watches; lo
 ## Verification needed before calling the slice complete
 
 Keep offline tests for actual Python behavior: unique fixture-backed IDs with reasons, invalid input making zero model calls, and a valid candidate set making one call. The current offline suite passed 135 tests on 2026-10-19, and a local DB query for Georgian `ჯაზი` returned one fixture-backed candidate. A controlled live Gemini smoke test was attempted but the provider returned HTTP 503; model output remains unverified. Add HTTP tests for 400 and serialization when an endpoint is built. Automated tests must not require live event sites or paid calls; neither CI success nor first-slice completion is claimed here.
+
+## Poster-image extraction slice
+
+The repository also contains five real event-poster images with six visibly described sessions and a manually reviewed reference in `data/posters/posters.json`. These images are inputs and evaluation evidence; they are not automatically database events. Three additional phone photos are stored in `tests/images/candidates/` for uncertainty and nonposter experiments.
+
+The separate image path in `src/golocal_data/poster_extraction.py` accepts JPEG, PNG, or WebP, corrects orientation, reduces the longest side to 1024 px, and asks the existing Gemini 3.1 Flash-Lite provider for schema-constrained fields. Each extracted field has value, quoted evidence, and confidence; missing data stays null. `src/golocal_data/poster_checks.py` makes the deterministic accepted/confirm/review/rejected decision and clears flagged values from a safe draft. `scripts/extract_poster.py` reads one image, while `scripts/evaluate_posters.py` processes all five reference images and reports differences. Model usage logs record tokens, estimated USD cost, and latency without storing image bytes or credentials.
+
+This slice currently returns JSON from local commands. It does not insert poster records into PostgreSQL: the existing event table requires a source URL, venue, and exact start time, which several posters lack. A successful live vision run, four compliant formal Lab 3 photos, and any database import design remain to be verified before claiming end-to-end course completion. Details and review rules are in `docs/multimodal-spec.md` and `docs/confidence-policy.md`.
