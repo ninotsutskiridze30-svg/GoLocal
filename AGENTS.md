@@ -17,6 +17,8 @@ AI coding agents work on goLocal-AI, a local discovery application for people ac
 - `parse_query` and `search_events` are deterministic; `explain` sends one batch to Gemini 3.1 Flash-Lite, validates structured output, and discards IDs absent from the retrieved candidates. No real semantic embedding call exists. Usage logging and the public HTTP contract are PENDING.
 - The HTTP 400 error body, public response shape, and broader date/time rules are PENDING. Do not silently choose a public contract.
 - Changed behavior needs a test that would fail if it broke. Automated tests must not depend on live event sites or paid model calls.
+- Poster extraction is a separate vision slice. Downscale before a model request; require a schema and validate the reply; every populated field needs image evidence. Missing poster facts remain null, and a printed doors-open time is not an event start.
+- Route uncertain poster fields through the pure `decide()` function. Never prefill a low-confidence or unsupported model value into a form. The five reviewed poster images are evaluation references, not automatically trusted database rows.
 
 ## Always
 
