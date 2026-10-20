@@ -1,12 +1,13 @@
 # AGENTS.md · goLocal-AI (working repository name)
 
-AI coding agents work on goLocal-AI, a local discovery application for people across Georgia. The data layer and three discovery functions exist; no HTTP application is implemented. Feature source of truth: `docs/spec.md`. `docs/api-contract.md` remains a team-review draft where it differs from the implemented discovery slice.
+AI coding agents work on goLocal-AI, a local discovery application for people across Georgia. The data layer, three discovery functions, poster reader, and local RAG service exist; no HTTP application is implemented. Feature source of truth: `docs/spec.md`. RAG behavior is specified in `docs/retrieval-spec.md`. `docs/api-contract.md` remains a team-review draft where it differs from the implemented discovery slice.
 
 ## Commands
 
 - Install: `python -m venv .venv`, then `.\.venv\Scripts\python.exe -m pip install -r requirements-dev.lock` and `.\.venv\Scripts\python.exe -m pip install -e ".[dev]"`.
 - Run database: `docker compose up -d --wait`; then `scripts/migrate.py`, `scripts/seed_demo.py`, and `scripts/verify_db.py` with the venv Python. Try discovery with `.\.venv\Scripts\python.exe scripts/recommend.py "ჯაზი"` after local configuration. No HTTP app exists.
 - Test: `$env:PYTEST_DISABLE_PLUGIN_AUTOLOAD='1'; .\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider`.
+- Run RAG: set `GOOGLE_API_KEY` in the process environment, then run `scripts/index_corpus.py` once and `scripts/ask_corpus.py "question"` with the venv Python. Rebuild the index after a corpus change. Run `evals/run_golden.py` for a live golden-set report.
 - Lint/format: PENDING — no configuration or verified command exists.
 
 ## Conventions
@@ -14,11 +15,12 @@ AI coding agents work on goLocal-AI, a local discovery application for people ac
 - Python is in use. The inherited plan says Django, while the team plan proposes FastAPI; no HTTP framework has been selected for this repository.
 - First slice: natural-language request, PostgreSQL rows loaded from the committed local JSON fixture, at most one Gemini call, and at most three unique fixture-backed recommendations with nonempty reasons. Empty or whitespace-only requests fail before the model call; HTTP 400 still requires an endpoint.
 - Treat fixtures as synthetic until verified. TKT.ge and Biletebi.ge are planned real sources; neither has a live integration here.
-- `parse_query` and `search_events` are deterministic; `explain` sends one batch to Gemini 3.1 Flash-Lite, validates structured output, and discards IDs absent from the retrieved candidates. No real semantic embedding call exists. Usage logging and the public HTTP contract are PENDING.
+- `parse_query` and `search_events` are deterministic; `explain` sends one batch to Gemini 3.1 Flash-Lite, validates structured output, and discards IDs absent from the retrieved candidates. The discovery path does not call embeddings and its usage logging and public HTTP contract are PENDING; the separate RAG path does embed text and log usage.
 - The HTTP 400 error body, public response shape, and broader date/time rules are PENDING. Do not silently choose a public contract.
 - Changed behavior needs a test that would fail if it broke. Automated tests must not depend on live event sites or paid model calls.
 - Poster extraction is a separate vision slice. Downscale before a model request; require a schema and validate the reply; every populated field needs image evidence. Missing poster facts remain null, and a printed doors-open time is not an event start.
 - Route uncertain poster fields through the pure `decide()` function. Never prefill a low-confidence or unsupported model value into a form. The five reviewed poster images are evaluation references, not automatically trusted database rows.
+- RAG uses the source-backed Markdown corpus and an ignored local file index, not PostgreSQL. Do not invent source URLs or claim snapshot prices/availability are current. A model answer needs a validated `{answer,citations,grounded}` reply, every sentence cited to a retrieved chunk, and a trusted URL mapped by application code; otherwise refuse. Refuse below the retrieval threshold before generation. Log every answer/refusal and preserve golden questions when tuning.
 
 ## Always
 

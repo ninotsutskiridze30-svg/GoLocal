@@ -1,0 +1,148 @@
+{
+  "timestamp_utc": "2026-10-20T14:40:12+00:00",
+  "mode": "live",
+  "embedding_model": "gemini-embedding-2",
+  "answer_model": "gemini-3.1-flash-lite",
+  "k": 5,
+  "min_score": 0.45,
+  "passed": 3,
+  "total": 10,
+  "pass_rate": 0.3,
+  "threshold": 0.7,
+  "items": [
+    {
+      "id": "g1",
+      "type": "factual",
+      "passed": false,
+      "failures": [
+        "expected answered, got refused: invalid_or_unavailable_model_reply",
+        "missing citation: events/valerian-shiukashvili",
+        "missing phrase: 19:30"
+      ],
+      "status": "refused",
+      "reason": "invalid_or_unavailable_model_reply",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g2",
+      "type": "factual",
+      "passed": false,
+      "failures": [
+        "expected answered, got refused: invalid_or_unavailable_model_reply",
+        "missing citation: events/digomi-olympic-pool",
+        "missing phrase: 5"
+      ],
+      "status": "refused",
+      "reason": "invalid_or_unavailable_model_reply",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g3",
+      "type": "reasoning",
+      "passed": false,
+      "failures": [
+        "expected answered, got refused: invalid_or_unavailable_model_reply",
+        "missing citation: events/harry-potter-mystery-ensemble",
+        "missing citation: events/valerian-shiukashvili",
+        "missing phrase: 6+",
+        "missing phrase: 10"
+      ],
+      "status": "refused",
+      "reason": "invalid_or_unavailable_model_reply",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g4",
+      "type": "edge",
+      "passed": false,
+      "failures": [
+        "expected answered, got refused: invalid_or_unavailable_model_reply",
+        "missing citation: events/hardhell",
+        "missing phrase: WarinD"
+      ],
+      "status": "refused",
+      "reason": "invalid_or_unavailable_model_reply",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g5",
+      "type": "refusal",
+      "passed": true,
+      "failures": [],
+      "status": "refused",
+      "reason": "invalid_or_unavailable_model_reply",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g6",
+      "type": "factual",
+      "passed": false,
+      "failures": [
+        "expected answered, got refused: invalid_or_unavailable_model_reply",
+        "missing citation: events/echo-halloween",
+        "missing phrase: კოსტიუმ"
+      ],
+      "status": "refused",
+      "reason": "invalid_or_unavailable_model_reply",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g7",
+      "type": "factual",
+      "passed": false,
+      "failures": [
+        "expected answered, got refused: invalid_or_unavailable_model_reply",
+        "missing citation: events/tim-burton-mystery-ensemble",
+        "missing phrase: სალარიძ"
+      ],
+      "status": "refused",
+      "reason": "invalid_or_unavailable_model_reply",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g8",
+      "type": "reasoning",
+      "passed": false,
+      "failures": [
+        "expected answered, got refused: invalid_or_unavailable_model_reply",
+        "missing citation: events/kugelmass",
+        "missing citation: events/little-red-riding-hood",
+        "missing phrase: 75",
+        "missing phrase: 35"
+      ],
+      "status": "refused",
+      "reason": "invalid_or_unavailable_model_reply",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g9",
+      "type": "refusal",
+      "passed": true,
+      "failures": [],
+      "status": "refused",
+      "reason": "invalid_or_unavailable_model_reply",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g10",
+      "type": "edge",
+      "passed": true,
+      "failures": [],
+      "status": "answered",
+      "reason": "",
+      "answer": "დიახ, Mystery Ensemble-ის ჰარი პოტერის მუსიკის კონცერტის პროგრამაში Hedwig's Theme შედის [1].",
+      "cited": [
+        "events/harry-potter-mystery-ensemble"
+      ]
+    }
+  ]
+}

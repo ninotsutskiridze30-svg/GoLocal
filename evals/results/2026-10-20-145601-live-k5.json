@@ -1,0 +1,136 @@
+{
+  "timestamp_utc": "2026-10-20T14:56:01+00:00",
+  "mode": "live",
+  "embedding_model": "gemini-embedding-2",
+  "answer_model": "gemini-3.1-flash-lite",
+  "k": 5,
+  "min_score": 0.45,
+  "passed": 9,
+  "total": 10,
+  "pass_rate": 0.9,
+  "threshold": 0.7,
+  "items": [
+    {
+      "id": "g1",
+      "type": "factual",
+      "passed": true,
+      "failures": [],
+      "status": "answered",
+      "reason": "",
+      "answer": "ვალერიან შიუკაშვილის სოლო კონცერტზე კარი 19:30 საათზე იღება [1][2].",
+      "cited": [
+        "events/valerian-shiukashvili",
+        "events/valerian-shiukashvili"
+      ]
+    },
+    {
+      "id": "g2",
+      "type": "factual",
+      "passed": true,
+      "failures": [],
+      "status": "answered",
+      "reason": "",
+      "answer": "დიღმის ოლიმპიურ აუზში სამედიცინო შემოწმება 5 ლარი ღირს [1].",
+      "cited": [
+        "events/digomi-olympic-pool"
+      ]
+    },
+    {
+      "id": "g3",
+      "type": "reasoning",
+      "passed": true,
+      "failures": [],
+      "status": "answered",
+      "reason": "",
+      "answer": "Harry Potter Mystery Ensemble-ის კონცერტზე ასაკობრივი შეზღუდვა არის 6+ [1]. ვალერიან შიუკაშვილის სოლო კონცერტზე დასწრება ნებადართულია 10 წლიდან [3].",
+      "cited": [
+        "events/harry-potter-mystery-ensemble",
+        "events/valerian-shiukashvili"
+      ]
+    },
+    {
+      "id": "g4",
+      "type": "edge",
+      "passed": true,
+      "failures": [],
+      "status": "answered",
+      "reason": "",
+      "answer": "დიახ, HARDHELL X REVOLUTION-ის მთავარ მოწვეულ შემსრულებლად WarinD არის მითითებული [1].",
+      "cited": [
+        "events/hardhell"
+      ]
+    },
+    {
+      "id": "g5",
+      "type": "refusal",
+      "passed": true,
+      "failures": [],
+      "status": "refused",
+      "reason": "model_timeout",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g6",
+      "type": "factual",
+      "passed": true,
+      "failures": [],
+      "status": "answered",
+      "reason": "",
+      "answer": "ECHO Halloween-ზე დასასწრებად აუცილებელია სრული ჰელოუინის კოსტიუმის ან ერთი შესამჩნევი ჰელოუინის დეტალის ტარება [1].",
+      "cited": [
+        "events/echo-halloween"
+      ]
+    },
+    {
+      "id": "g7",
+      "type": "factual",
+      "passed": true,
+      "failures": [],
+      "status": "answered",
+      "reason": "",
+      "answer": "ტიმ ბარტონის Mystery Ensemble-ის კონცერტი გაიმართება ვახტანგ სალარიძის საკონცერტო დარბაზში [1][2].",
+      "cited": [
+        "events/tim-burton-mystery-ensemble",
+        "events/tim-burton-mystery-ensemble"
+      ]
+    },
+    {
+      "id": "g8",
+      "type": "reasoning",
+      "passed": true,
+      "failures": [],
+      "status": "answered",
+      "reason": "",
+      "answer": "სპექტაკლი „კუგელმას!“ 75 წუთი გრძელდება [2], ხოლო „წითელქუდა“ 35 წუთს გრძელდება [1].",
+      "cited": [
+        "events/little-red-riding-hood",
+        "events/kugelmass"
+      ]
+    },
+    {
+      "id": "g9",
+      "type": "refusal",
+      "passed": true,
+      "failures": [],
+      "status": "refused",
+      "reason": "source_does_not_answer",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g10",
+      "type": "edge",
+      "passed": false,
+      "failures": [
+        "expected answered, got refused: model_http_503",
+        "missing citation: events/harry-potter-mystery-ensemble",
+        "missing phrase: Hedwig"
+      ],
+      "status": "refused",
+      "reason": "model_http_503",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    }
+  ]
+}
