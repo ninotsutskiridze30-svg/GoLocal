@@ -1,0 +1,138 @@
+{
+  "timestamp_utc": "2026-10-20T14:48:11+00:00",
+  "mode": "live",
+  "embedding_model": "gemini-embedding-2",
+  "answer_model": "gemini-3.1-flash-lite",
+  "k": 5,
+  "min_score": 0.45,
+  "passed": 7,
+  "total": 10,
+  "pass_rate": 0.7,
+  "threshold": 0.7,
+  "items": [
+    {
+      "id": "g1",
+      "type": "factual",
+      "passed": false,
+      "failures": [
+        "expected answered, got refused: model_http_503",
+        "missing citation: events/valerian-shiukashvili",
+        "missing phrase: 19:30"
+      ],
+      "status": "refused",
+      "reason": "model_http_503",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g2",
+      "type": "factual",
+      "passed": false,
+      "failures": [
+        "expected answered, got refused: model_http_503",
+        "missing citation: events/digomi-olympic-pool",
+        "missing phrase: 5"
+      ],
+      "status": "refused",
+      "reason": "model_http_503",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g3",
+      "type": "reasoning",
+      "passed": true,
+      "failures": [],
+      "status": "answered",
+      "reason": "",
+      "answer": "Harry Potter Mystery Ensemble-ის კონცერტზე ასაკობრივი შეზღუდვა არის 6+ [1]. ვალერიან შიუკაშვილის სოლო კონცერტზე დასწრება ნებადართულია 10 წლიდან [3].",
+      "cited": [
+        "events/harry-potter-mystery-ensemble",
+        "events/valerian-shiukashvili"
+      ]
+    },
+    {
+      "id": "g4",
+      "type": "edge",
+      "passed": true,
+      "failures": [],
+      "status": "answered",
+      "reason": "",
+      "answer": "დიახ, HARDHELL X REVOLUTION-ის მთავარ მოწვეულ შემსრულებლად WarinD არის მითითებული [1].",
+      "cited": [
+        "events/hardhell"
+      ]
+    },
+    {
+      "id": "g5",
+      "type": "refusal",
+      "passed": true,
+      "failures": [],
+      "status": "refused",
+      "reason": "source_does_not_answer",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g6",
+      "type": "factual",
+      "passed": true,
+      "failures": [],
+      "status": "answered",
+      "reason": "",
+      "answer": "ECHO Halloween-ზე დასასწრებად აუცილებელია სრული ჰელოუინის კოსტიუმის ან ერთი შესამჩნევი ჰელოუინის დეტალის ტარება [1].",
+      "cited": [
+        "events/echo-halloween"
+      ]
+    },
+    {
+      "id": "g7",
+      "type": "factual",
+      "passed": false,
+      "failures": [
+        "expected answered, got refused: model_http_503",
+        "missing citation: events/tim-burton-mystery-ensemble",
+        "missing phrase: სალარიძ"
+      ],
+      "status": "refused",
+      "reason": "model_http_503",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g8",
+      "type": "reasoning",
+      "passed": true,
+      "failures": [],
+      "status": "answered",
+      "reason": "",
+      "answer": "სპექტაკლი „კუგელმას!“ 75 წუთი გრძელდება [2], ხოლო „წითელქუდა“ 35 წუთს გრძელდება [1].",
+      "cited": [
+        "events/little-red-riding-hood",
+        "events/kugelmass"
+      ]
+    },
+    {
+      "id": "g9",
+      "type": "refusal",
+      "passed": true,
+      "failures": [],
+      "status": "refused",
+      "reason": "source_does_not_answer",
+      "answer": "ამ კითხვაზე პასუხი ხელმისაწვდომი წყაროებით ვერ დავადასტურე. გადაამოწმეთ მითითებულ წყაროსთან ან დააზუსტეთ კითხვა.",
+      "cited": []
+    },
+    {
+      "id": "g10",
+      "type": "edge",
+      "passed": true,
+      "failures": [],
+      "status": "answered",
+      "reason": "",
+      "answer": "დიახ, Mystery Ensemble-ის ჰარი პოტერის მუსიკის კონცერტის პროგრამაში Hedwig's Theme შედის [1].",
+      "cited": [
+        "events/harry-potter-mystery-ensemble"
+      ]
+    }
+  ]
+}

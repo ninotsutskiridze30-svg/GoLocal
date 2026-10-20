@@ -9,9 +9,15 @@ Available: versioned schema, Docker PostgreSQL with PostGIS and pgvector,
 normalization/validation functions, 25 fictional events with six demo venues,
 and optional fictional users and activity.
 
-Not implemented yet: real-source collectors, real embeddings, and an HTTP application.
+Not implemented yet: real-source collectors and an HTTP application.
 The bounded Python discovery path uses a deterministic query parser, PostgreSQL
 search over demo rows, and one Gemini call for up to three Georgian reasons.
+The separate RAG path uses 13 reviewed public-listing snapshots, Gemini text
+embeddings, a local file index, and source-cited answers or refusals. The first
+three live golden runs passed 3/10, 7/10 and 9/10 under the original scorer.
+The third run used bounded retries; its remaining answer failure was Gemini
+HTTP 503. One refusal counted as a pass after a provider timeout, so the
+source-based audit of that run is 8/10, still above the 0.70 threshold.
 
 **All demo data is fictional.** Event titles start with `[DEMO]`, URLs are
 placeholders on `example.com`, coordinates are test points, and optional demo
@@ -135,6 +141,29 @@ blank input or zero database candidates. Each nonempty candidate set makes at
 most one request; a model failure returns a sanitized error. The source links are
 `example.com` placeholders and must not be presented as ticket links. This CLI
 is not an HTTP service; the HTTP 400 acceptance criterion remains open.
+
+## Ask source-grounded questions locally
+
+The RAG service reads `data/corpus/events/*.md`. Each document has a public source
+URL and is a snapshot, not a live ticket feed. Set `GOOGLE_API_KEY` in your shell
+environment (do not print or commit it), then from the repository root run:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/index_corpus.py
+.\.venv\Scripts\python.exe scripts/ask_corpus.py "ვალერიან შიუკაშვილის კონცერტზე კარი როდის იღება?"
+.\.venv\Scripts\python.exe evals/run_golden.py
+```
+
+The first command makes one embedding call per chunk and writes the ignored
+`logs/rag_index.json`. Rebuild after any Markdown edit or embedding-model change.
+The second embeds the question, retrieves up to five chunks, and returns JSON
+with an answer, numbered citations and original source URLs; it refuses when
+the available evidence is insufficient or citations fail validation. The third
+runs ten fixed golden questions live and writes `evals/results/<run>.json`; it
+requires a 0.70 pass rate. These commands do not use PostgreSQL or load `.env`.
+Usage and answer/refusal logs live under ignored `logs/`. Automated tests use
+fakes and make no paid calls. See `docs/retrieval-spec.md` for scoring, grounding
+rules, limitations and evaluation status.
 
 ## Read event posters locally
 

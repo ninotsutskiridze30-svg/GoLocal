@@ -1,0 +1,15 @@
+{
+  "threshold": 0.70,
+  "items": [
+    {"id":"g1","type":"factual","question":"ვალერიან შიუკაშვილის სოლო კონცერტზე კარი როდის იღება?","expect":"answered","must_cite":["events/valerian-shiukashvili"],"must_mention":["19:30"],"why":"კარის გახსნის დრო კონცერტის დაწყების დროს არ უნდა აერიოს."},
+    {"id":"g2","type":"factual","question":"დიღმის ოლიმპიურ აუზში სამედიცინო შემოწმება რა ღირს წყაროს მიხედვით?","expect":"answered","must_cite":["events/digomi-olympic-pool"],"must_mention":["5"],"why":"წყაროში მითითებული საფასური სწორად უნდა გადმოიცეს."},
+    {"id":"g3","type":"reasoning","question":"შეადარე Harry Potter Mystery Ensemble-ის და ვალერიან შიუკაშვილის კონცერტების ასაკობრივი შეზღუდვები.","expect":"answered","must_cite":["events/harry-potter-mystery-ensemble","events/valerian-shiukashvili"],"must_mention":["6+","10"],"why":"ორი წყაროს პასუხში ორივე წყარო უნდა იყოს მითითებული."},
+    {"id":"g4","type":"edge","question":"hardhell ზე warind იქნება?","expect":"answered","must_cite":["events/hardhell"],"must_mention":["WarinD"],"why":"მოკლე არაფორმალური შეკითხვის მოძიება."},
+    {"id":"g5","type":"refusal","question":"ვალერიან შიუკაშვილის კონცერტზე ამ წუთას რამდენი თავისუფალი ადგილი დარჩა?","expect":"refused","must_cite":[],"must_mention":[],"why":"წყაროს snapshot არ ამტკიცებს ცოცხალ ხელმისაწვდომობას."},
+    {"id":"g6","type":"factual","question":"ECHO Halloween-ზე რა არის dress code?","expect":"answered","must_cite":["events/echo-halloween"],"must_mention":["კოსტიუმ"],"why":"შესვლის წესის არასწორი აღწერა სტუმარს დააზიანებს."},
+    {"id":"g7","type":"factual","question":"ტიმ ბარტონის Mystery Ensemble-ის კონცერტი რომელ დარბაზშია?","expect":"answered","must_cite":["events/tim-burton-mystery-ensemble"],"must_mention":["სალარიძ"],"why":"მდებარეობა სწორი წყაროდან უნდა მოდიოდეს."},
+    {"id":"g8","type":"reasoning","question":"შეადარე კუგელმასისა და წითელქუდას სპექტაკლების ხანგრძლივობა.","expect":"answered","must_cite":["events/kugelmass","events/little-red-riding-hood"],"must_mention":["75","35"],"why":"შედარებისთვის ორი დოკუმენტია საჭირო."},
+    {"id":"g9","type":"refusal","question":"რომელ საათზე იწყება დიღმის აუზის კონცერტი?","expect":"refused","must_cite":[],"must_mention":[],"why":"აუზის დოკუმენტი კონცერტს არ აღწერს."},
+    {"id":"g10","type":"edge","question":"ჰარი პოტერის კონცერტზე Hedwig's Theme არის?","expect":"answered","must_cite":["events/harry-potter-mystery-ensemble"],"must_mention":["Hedwig"],"why":"ინგლისური ნაწარმოების სახელის პოვნა ქართულ შეკითხვაში."}
+  ]
+}
